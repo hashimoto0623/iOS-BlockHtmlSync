@@ -8,9 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-enum BRBlockHtmlSyncResultType {
-    BRBlockHtmlSyncResultTypeData = 0,
-    BRBlockHtmlSyncResultTypeString = 1
+enum BlockHtmlSyncResultType {
+    BlockHtmlSyncResultTypeData = 0,
+    BlockHtmlSyncResultTypeString = 1
     };
 
 /**

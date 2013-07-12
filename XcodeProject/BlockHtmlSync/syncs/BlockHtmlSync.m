@@ -141,7 +141,7 @@
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
     id result = _async_data;
     
-    if (_resultType == BRBlockHtmlSyncResultTypeString) {
+    if (_resultType == BlockHtmlSyncResultTypeString) {
         int enc_arr[] = {
             NSUTF8StringEncoding,			// UTF-8
             NSShiftJISStringEncoding,		// Shift_JIS
@@ -175,11 +175,16 @@
 #pragma mark - Other
 /// @name Other
 
+/**
+ パラメーターをテキストに変換
+ @param prefix prefix
+ */
 -(NSString*)makeParamaterStringWithPrefix:(NSString*)prefix{
     
     NSMutableArray *arrParam = [[[NSMutableArray alloc] initWithCapacity:0] autorelease];
     for (NSString *key in _param){
-        [arrParam addObject:[NSString stringWithFormat:@"%@=%@",key, [_param objectForKey:key]]];
+        NSString *val = [self convertGetParamsToString:[_param objectForKey:key]];
+        [arrParam addObject:[NSString stringWithFormat:@"%@=%@",key, val]];
     }
     
     if (prefix) {
@@ -188,5 +193,23 @@
     return [arrParam componentsJoinedByString:@"&"];
 }
 
+
+
+/**
+ HTMLエンコードする
+ @param string 元のテキスト
+ */
+-(NSString*)convertGetParamsToString:(NSString*)string{
+    
+    NSString *escapedUrlString = (NSString *)CFURLCreateStringByAddingPercentEscapes(
+                                                                                     NULL,
+                                                                                     (CFStringRef)string,
+                                                                                     NULL,
+                                                                                     (CFStringRef)@"!*'();:@&=+$,/?%#[]",
+                                                                                     kCFStringEncodingUTF8 );
+    
+    [escapedUrlString autorelease];
+    return [NSString stringWithFormat:@"%@",escapedUrlString];
+}
 
 @end
