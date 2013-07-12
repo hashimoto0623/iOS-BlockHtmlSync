@@ -7,6 +7,7 @@
 //
 
 #import "BRAppDelegate.h"
+#import "BRMainViewController.h"
 
 @implementation BRAppDelegate
 
@@ -22,6 +23,9 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+    
+    [self.window setRootViewController:[[[BRMainViewController alloc] init] autorelease]];
+    
     return YES;
 }
 
