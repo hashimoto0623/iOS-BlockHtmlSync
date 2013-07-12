@@ -142,6 +142,7 @@
     id result = _async_data;
     
     if (_resultType == BlockHtmlSyncResultTypeString) {
+        //  テキストに変換
         int enc_arr[] = {
             NSUTF8StringEncoding,			// UTF-8
             NSShiftJISStringEncoding,		// Shift_JIS
@@ -164,6 +165,11 @@
         }
         result = data_str;
     }
+    else if(_resultType == BlockHtmlSyncResultTypeImage){
+        //  画像に変換
+        result = [UIImage imageWithData:_async_data];
+    }
+    
     
     if(self.successBlock){
         self.successBlock(result);

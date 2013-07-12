@@ -11,6 +11,7 @@
 @interface BRMainViewController : UIViewController
 @property (retain, nonatomic) IBOutlet UITextView *resultField;
 @property (retain, nonatomic) IBOutlet UITextField *urlField;
+@property (retain, nonatomic) IBOutlet UIImageView *downloadImageView;
 - (IBAction)tapSend:(id)sender;
 
 @end

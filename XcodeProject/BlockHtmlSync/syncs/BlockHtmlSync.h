@@ -10,7 +10,8 @@
 
 enum BlockHtmlSyncResultType {
     BlockHtmlSyncResultTypeData = 0,
-    BlockHtmlSyncResultTypeString = 1
+    BlockHtmlSyncResultTypeString = 1,
+    BlockHtmlSyncResultTypeImage = 2
     };
 
 /**

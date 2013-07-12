@@ -39,6 +39,7 @@
 - (void)dealloc {
     [_resultField release];
     [_urlField release];
+    [_downloadImageView release];
     [super dealloc];
 }
 
@@ -53,12 +54,19 @@
                      ] autorelease];
     
     //  結果タイプを設定
-    [sync setResultType:BlockHtmlSyncResultTypeString];
+    [sync setResultType:BlockHtmlSyncResultTypeImage];
     
-    //  onSuccess
-    sync.successBlock = ^(id result){
+    /*
+    //  onSuccessString
+    sync.successBlock = ^(NSString* result){
         self.resultField.text = result;
     };
+     */
+    //  onSuccessImage
+    sync.successBlock = ^(UIImage* result){
+        [self.downloadImageView setImage:result];
+    };
+
     
     //  onError
     sync.errorBlock = ^(NSError* error){
