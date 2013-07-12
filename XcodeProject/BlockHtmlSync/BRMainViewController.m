@@ -53,7 +53,7 @@
                      ] autorelease];
     
     //  結果タイプを設定
-    [sync setResultType:BRBlockHtmlSyncResultTypeString];
+    [sync setResultType:BlockHtmlSyncResultTypeString];
     
     //  onSuccess
     sync.successBlock = ^(id result){
