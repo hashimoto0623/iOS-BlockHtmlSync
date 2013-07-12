@@ -1,0 +1,1 @@
+iOS-BlockHtmlSync=================iOS html通信用クラス
